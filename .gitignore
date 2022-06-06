@@ -1,0 +1,8 @@
+ms-prices/target/
+ms-prices/src/test/**/target/
+ms-prices/src/main/**/target/
+
+ms-prices/.classpath
+ms-prices/.project
+ms-prices/.settings
+
