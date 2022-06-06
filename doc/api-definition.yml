@@ -1,0 +1,78 @@
+swagger: '2.0'
+info:
+  description: This is a API for product prices
+  version: 1.0.0
+  title: Product Price API
+  # put the contact info for your development or API team
+  contact:
+    email: barodriguez@paradigmadigital.com
+
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+
+# tags are used for organizing operations
+tags:
+- name: prices
+  description: Product prices
+
+paths:
+  /price:
+    get:
+      tags:
+      - prices
+      summary: searches price for product
+      operationId: searchPrices
+      description: |
+        Find prices in specific date
+      produces:
+      - application/json
+      parameters:
+      - in: query
+        name: brand
+        description: brand id
+        required: true
+        type: integer
+      - in: query
+        name: product
+        description: product id
+        required: true
+        type: integer
+      - in: query
+        name: date
+        description: date in format '2021-01-30T08:30:00Z'
+        type: string
+        required: false
+        format: date-time
+      responses:
+        200:
+          description: search results matching criteria
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/ProductPrice'
+        400:
+          description: bad input parameter
+definitions:
+  ProductPrice:
+    type: object
+    properties:
+      id:
+        type: number
+        example: 1
+      product:
+        type: integer
+        example: 35411
+      start_date:
+        type: string
+        format: date-time
+      end_date:
+        type: string
+        format: date-time
+      price:
+        type: number
+basePath: /benjaminrodriguez/persistence-prices/1.0.0
+schemes:
+ - https
+# Added by API Auto Mocking Plugin
+host: virtserver.swaggerhub.com
