@@ -57,7 +57,7 @@ definitions:
   ProductPrice:
     type: object
     properties:
-      id:
+      brand:
         type: number
         example: 1
       product:
