@@ -27,11 +27,14 @@ public class ProductPriceRDTO {
     @ApiModelProperty(value = "Product Id", example = "3455")
     private Integer product;
     
+    @ApiModelProperty(value = "PriceList", example = "1")
+    private Integer priceList;
+
     @ApiModelProperty(value = "Start Date Price", example = "2021-01-30T08:30:00Z")
     private String startDate;
     
     @ApiModelProperty(value = "End Date Price", example = "2021-03-30T08:30:00Z")
-    private String end_date;
+    private String endDate;
 
     @ApiModelProperty(value = "Price", example = "25.50")
     private BigDecimal price;

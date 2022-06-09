@@ -29,8 +29,9 @@ public class PriceControllerImp implements PriceController {
     private final PriceService service;
     
     @Override
-    public ProductPriceRDTO getPrice(String brand, String product, String date) throws MainException {
+    public ProductPriceRDTO getPrice(Integer brand, Integer product, String date) throws MainException {
         return transformer.getProductPriceRDTO(service.searchPrice(transformer.getProductPriceSearch(brand, product, date)));
+        
     }
     
 }

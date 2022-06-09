@@ -57,7 +57,7 @@ public interface PriceController {
     @RequestMapping(value = PRICE_PATH, method = RequestMethod.GET, produces = {
         MediaType.APPLICATION_JSON_VALUE})
     ProductPriceRDTO getPrice(
-        @ApiParam(value = "Brand Id") @RequestParam(value = "brand", required = true) String brand,
-        @ApiParam(value = "Product") @RequestParam(value = "product", required = true) String product,
+        @ApiParam(value = "Brand Id") @RequestParam(value = "brand", required = true) Integer brand,
+        @ApiParam(value = "Product") @RequestParam(value = "product", required = true) Integer product,
         @ApiParam(value = "Date") @RequestParam(value = "date", required = true) String date)
         throws es.inditex.prices.exception.MainException;}

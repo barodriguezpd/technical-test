@@ -18,7 +18,7 @@ public interface PriceControllerTransformer {
      * @param date
      * @return
      */
-    ProductPriceSearch getProductPriceSearch(String brand, String product, String date);
+    ProductPriceSearch getProductPriceSearch(Integer brand, Integer product, String date);
     
     /**
      * Transform productPrice in ProductPriceRDTO

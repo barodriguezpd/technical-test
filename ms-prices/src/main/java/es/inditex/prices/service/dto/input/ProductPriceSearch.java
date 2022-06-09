@@ -16,6 +16,6 @@ public class ProductPriceSearch {
     
     private Integer brand;
     
-    private Integer date;
+    private String date;
 
 }
