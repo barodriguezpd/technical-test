@@ -6,14 +6,14 @@
 
 ### Design decisions
 
-1. **Microservice in layers**
+**Microservice in layers**
 * Controller: First point access
 * Transformer: Responsible for transformations
 * Service: Business logic
 * Dao: Persistence control
 * Repository: Persistence layer
 
-2. Table prices add fields
+**Table prices add fields**
 * Id for use jpa with identifier
 
 ### H2 Console
