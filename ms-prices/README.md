@@ -19,8 +19,11 @@
 
 ### Build and running
 * Build
+
 mvn clean package
+
 * Runing
+
 java -jar target/ms-prices-0.0.1-SNAPSHOT.jar
 
 ### H2 Console
