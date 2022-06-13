@@ -59,5 +59,5 @@ public interface PriceController {
     ProductPriceRDTO getPrice(
         @ApiParam(value = "Brand Id") @RequestParam(value = "brand", required = true) Integer brand,
         @ApiParam(value = "Product") @RequestParam(value = "product", required = true) Integer product,
-        @ApiParam(value = "Date") @RequestParam(value = "date", required = true) String date)
+        @ApiParam(value = "Date in format yyyy-MM-dd HH:mm") @RequestParam(value = "date", required = true) String date)
         throws es.inditex.prices.exception.MainException;}

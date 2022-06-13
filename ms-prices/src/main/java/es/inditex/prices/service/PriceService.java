@@ -1,5 +1,6 @@
 package es.inditex.prices.service;
 
+import es.inditex.prices.exception.MainException;
 import es.inditex.prices.service.dto.input.ProductPriceSearch;
 import es.inditex.prices.service.dto.output.ProductPrice;
 
@@ -10,6 +11,12 @@ import es.inditex.prices.service.dto.output.ProductPrice;
  */
 public interface PriceService {
     
-     ProductPrice searchPrice(ProductPriceSearch searchParms);
+    /**
+     * Search unique price from search params
+     * @param searchParms
+     * @return
+     * @throws MainException
+     */
+    ProductPrice searchPrice(ProductPriceSearch searchParms) throws MainException;
      
 }

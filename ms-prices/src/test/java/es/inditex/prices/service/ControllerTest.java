@@ -26,8 +26,8 @@ public class ControllerTest {
     
     @Test
     void searchPrice() {
-        when(service.searchPrice(any())).thenReturn(mock(ProductPrice.class));
         try {
+            when(service.searchPrice(any())).thenReturn(mock(ProductPrice.class));
             when(transformer.getProductPriceSearch(any(), any(), any())).thenReturn(mock(ProductPriceSearch.class));
             when(transformer.getProductPriceRDTO(any())).thenReturn(mock(ProductPriceRDTO.class));
             when(service.searchPrice(any())).thenReturn(mock(ProductPrice.class));

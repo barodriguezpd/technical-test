@@ -3,6 +3,7 @@ package es.inditex.prices.controller.transformer.impl;
 import es.inditex.prices.controller.rdto.response.ProductPriceRDTO;
 import es.inditex.prices.controller.transformer.PriceControllerTransformer;
 import es.inditex.prices.exception.MainException;
+import es.inditex.prices.exception.NotValidException;
 import es.inditex.prices.service.dto.input.ProductPriceSearch;
 import es.inditex.prices.service.dto.output.ProductPrice;
 import org.springframework.stereotype.Component;
@@ -16,14 +17,14 @@ public class PriceControllerTransformerImpl implements PriceControllerTransforme
     
     @Override
     public es.inditex.prices.service.dto.input.ProductPriceSearch getProductPriceSearch(Integer brand, Integer product, String date) throws MainException {
-        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-ss HH:mm");
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd HH:mm");
         Date dateSearch = null;
         try {
             dateSearch = sdf.parse(date);
         } catch (ParseException e) {
-            throw new MainException("Error en campo fecha");
+            throw new NotValidException("Error in date field");
         }
-        return ProductPriceSearch.builder().brand(brand).product(product).date(dateSearch).build();
+        return ProductPriceSearch.builder().brand(brand).product(new Long(product)).date(dateSearch).build();
     }
     
     @Override

@@ -63,6 +63,9 @@ definitions:
       product:
         type: integer
         example: 35411
+      price_list:
+        type: integer
+        example: 35411
       start_date:
         type: string
         format: date-time

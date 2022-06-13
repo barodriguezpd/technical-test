@@ -14,7 +14,7 @@ import java.util.Date;
 @Builder
 public class ProductPriceSearch {
     
-    private Integer product;
+    private Long product;
     
     private Integer brand;
     

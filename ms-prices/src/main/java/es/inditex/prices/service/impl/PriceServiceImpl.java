@@ -1,5 +1,7 @@
 package es.inditex.prices.service.impl;
 
+import es.inditex.prices.exception.MainException;
+import es.inditex.prices.exception.ResourceNotFoundException;
 import es.inditex.prices.service.PriceService;
 import es.inditex.prices.service.dao.PricesDao;
 import es.inditex.prices.service.dao.entity.Prices;
@@ -20,9 +22,11 @@ public class PriceServiceImpl implements PriceService {
     private final PriceServiceTransformer transformer;
     
     @Override
-    public ProductPrice searchPrice(ProductPriceSearch searchParms) {
+    public ProductPrice searchPrice(ProductPriceSearch searchParms) throws MainException {
         List<Prices> prices = pricesDao.getPrices(searchParms.getBrand(), searchParms.getProduct(), searchParms.getDate());
-        prices.sort((Prices p1, Prices p2) -> Integer.compare(p1.getPriority(), p2.getPriority()));
+        if (prices.isEmpty())
+            throw new ResourceNotFoundException("No encontro registros con los datos indicados");
+        prices.sort((Prices p1, Prices p2) -> Integer.compare(p2.getPriority(), p1.getPriority()));
         return transformer.getPrice(prices.get(0));
     }
     

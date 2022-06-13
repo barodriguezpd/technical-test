@@ -1,5 +1,6 @@
-package es.inditex.prices;
+package es.inditex.prices.service;
 
+import es.inditex.prices.exception.MainException;
 import es.inditex.prices.service.PriceService;
 import es.inditex.prices.service.dto.output.ProductPrice;
 import org.junit.jupiter.api.Test;
@@ -39,13 +40,14 @@ public class TechnicalWithServiceMocksTest {
     void searchPrice1() {
         String date = "2020-06-14 10:00";
         String response = "35.5";
-        when(service.searchPrice(any())).thenReturn(getProductPrice(response));
         
         try {
+            when(service.searchPrice(any())).thenReturn(getProductPrice(response));
             RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/price?product=" + product + "&brand=" + brand + "&date=" + date).accept(MediaType.APPLICATION_JSON);
             mockMvc.perform(requestBuilder).andDo(print()).andExpect(status().isOk()).andExpect(content().string(containsString(response)));
+        } catch (MainException e) {
+            fail(e.getMessage());
         } catch (Exception e) {
-            e.printStackTrace();
             fail(e.getMessage());
         }
     }
@@ -54,13 +56,14 @@ public class TechnicalWithServiceMocksTest {
     void searchPrice2() {
         String date = "2020-06-14 16:00";
         String response = "25.45";
-        when(service.searchPrice(any())).thenReturn(getProductPrice(response));
         
         try {
+            when(service.searchPrice(any())).thenReturn(getProductPrice(response));
             RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/price?product=" + product + "&brand=" + brand + "&date=" + date).accept(MediaType.APPLICATION_JSON);
             mockMvc.perform(requestBuilder).andDo(print()).andExpect(status().isOk()).andExpect(content().string(containsString(response)));
+        } catch (MainException e) {
+            fail(e.getMessage());
         } catch (Exception e) {
-            e.printStackTrace();
             fail(e.getMessage());
         }
     }
@@ -69,13 +72,14 @@ public class TechnicalWithServiceMocksTest {
     void searchPrice3() {
         String date = "2020-06-14 21:00";
         String response = "35.5";
-        when(service.searchPrice(any())).thenReturn(getProductPrice(response));
         
         try {
+            when(service.searchPrice(any())).thenReturn(getProductPrice(response));
             RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/price?product=" + product + "&brand=" + brand + "&date=" + date).accept(MediaType.APPLICATION_JSON);
             mockMvc.perform(requestBuilder).andDo(print()).andExpect(status().isOk()).andExpect(content().string(containsString(response)));
+        } catch (MainException e) {
+            fail(e.getMessage());
         } catch (Exception e) {
-            e.printStackTrace();
             fail(e.getMessage());
         }
     }
@@ -84,13 +88,14 @@ public class TechnicalWithServiceMocksTest {
     void searchPrice4() {
         String date = "2020-06-15 10:00";
         String response = "30.5";
-        when(service.searchPrice(any())).thenReturn(getProductPrice(response));
         
         try {
+            when(service.searchPrice(any())).thenReturn(getProductPrice(response));
             RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/price?product=" + product + "&brand=" + brand + "&date=" + date).accept(MediaType.APPLICATION_JSON);
             mockMvc.perform(requestBuilder).andDo(print()).andExpect(status().isOk()).andExpect(content().string(containsString(response)));
+        } catch (MainException e) {
+            fail(e.getMessage());
         } catch (Exception e) {
-            e.printStackTrace();
             fail(e.getMessage());
         }
     }
@@ -99,13 +104,14 @@ public class TechnicalWithServiceMocksTest {
     void searchPrice5() {
         String date = "2020-06-16 21:00";
         String response = "38.95";
-        when(service.searchPrice(any())).thenReturn(getProductPrice(response));
         
         try {
+            when(service.searchPrice(any())).thenReturn(getProductPrice(response));
             RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/price?product=" + product + "&brand=" + brand + "&date=" + date).accept(MediaType.APPLICATION_JSON);
             mockMvc.perform(requestBuilder).andDo(print()).andExpect(status().isOk()).andExpect(content().string(containsString(response)));
+        } catch (MainException e) {
+            fail(e.getMessage());
         } catch (Exception e) {
-            e.printStackTrace();
             fail(e.getMessage());
         }
     }

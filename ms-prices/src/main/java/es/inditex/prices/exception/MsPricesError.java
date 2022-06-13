@@ -8,19 +8,16 @@ import lombok.Builder;
 import lombok.Data;
 
 /**
- * Object information detail from response error
  * @author Benjamin Rodriguez
  *
  */
 @Data
 @Builder
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
-@ApiModel(value = "error_content", description = "Response object that represent an error in the API")
-final public class ErrorContent {
+@ApiModel(value = "error", description = "Response object that represent an error in the API")
+final public class MsPricesError {
 
-    @ApiModelProperty(value = "Error message", example = "Resource not found")
-    private String message;
-    @ApiModelProperty(value = "Error details", example = "")
-    private Object details;
+    @ApiModelProperty(value = "error")
+    private ErrorContent error;
 }
 

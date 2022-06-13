@@ -12,6 +12,6 @@ import java.util.List;
  */
 public interface PricesDao {
     
-    public List<Prices> getPrices(Integer brand, Integer product, Date date);
+    public List<Prices> getPrices(Integer brand, Long product, Date date);
     
 }
