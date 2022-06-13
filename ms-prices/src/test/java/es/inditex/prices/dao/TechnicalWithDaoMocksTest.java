@@ -117,8 +117,8 @@ public class TechnicalWithDaoMocksTest {
         List<Prices> prices = new ArrayList<Prices>();
         Prices pricesEntity = new Prices();
         pricesEntity.setPrice(Double.parseDouble(price));
-        pricesEntity.setStartDate(new Timestamp(new Date().getTime()));
-        pricesEntity.setEndDate(new Timestamp(new Date().getTime()));
+        pricesEntity.setStartDate(202206131030l);
+        pricesEntity.setEndDate(202206131030l);
         pricesEntity.setProductId(product);
         pricesEntity.setBrandId(brand);
         pricesEntity.setPriceList(priceList);

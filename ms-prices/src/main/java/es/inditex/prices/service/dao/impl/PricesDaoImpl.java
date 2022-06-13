@@ -6,7 +6,7 @@ import es.inditex.prices.service.dao.repository.PricesRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
-import java.sql.Timestamp;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
@@ -18,7 +18,8 @@ public class PricesDaoImpl implements PricesDao {
     
     @Override
     public List<Prices> getPrices(Integer brand, Long product, Date date) {
-        return pricesRepository.findPriceByBrandProduct(brand, product, new Timestamp(date.getTime()));
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddHHmm");
+        return pricesRepository.findPriceByBrandProduct(brand, product, Long.parseLong(sdf.format(date)));
     }
     
 }

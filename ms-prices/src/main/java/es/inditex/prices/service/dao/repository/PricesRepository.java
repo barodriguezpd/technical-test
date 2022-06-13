@@ -5,7 +5,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
-import java.sql.Timestamp;
 import java.util.List;
 
 /**
@@ -17,6 +16,6 @@ import java.util.List;
 public interface PricesRepository extends JpaRepository<Prices, Long> {
     
     @Query("select p from Prices p where p.brandId = :brand and p.productId = :product and p.startDate <= :date and p.endDate >= :date")
-    List<Prices> findPriceByBrandProduct(int brand, long product, Timestamp date);
+    List<Prices> findPriceByBrandProduct(int brand, long product, long date);
     
 }

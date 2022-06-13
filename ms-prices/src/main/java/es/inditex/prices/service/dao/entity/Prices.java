@@ -7,8 +7,6 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import java.sql.Timestamp;
-
 @Data
 @Entity
 @Table(name = "PRICES")
@@ -22,10 +20,10 @@ public class Prices {
     private int brandId;
     
     @Column(name = "START_DATE")
-    private Timestamp startDate;
+    private long startDate;
 
     @Column(name = "END_DATE")
-    private Timestamp endDate;
+    private long endDate;
 
     @Column(name = "PRICE_LIST")
     private int priceList;
