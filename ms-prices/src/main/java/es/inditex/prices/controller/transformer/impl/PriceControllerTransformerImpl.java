@@ -2,18 +2,28 @@ package es.inditex.prices.controller.transformer.impl;
 
 import es.inditex.prices.controller.rdto.response.ProductPriceRDTO;
 import es.inditex.prices.controller.transformer.PriceControllerTransformer;
+import es.inditex.prices.exception.MainException;
 import es.inditex.prices.service.dto.input.ProductPriceSearch;
 import es.inditex.prices.service.dto.output.ProductPrice;
 import org.springframework.stereotype.Component;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.Date;
 
 @Component
 public class PriceControllerTransformerImpl implements PriceControllerTransformer {
     
     @Override
-    public es.inditex.prices.service.dto.input.ProductPriceSearch getProductPriceSearch(Integer brand, Integer product, String date) {
-        return ProductPriceSearch.builder().brand(brand).product(product).date(date).build();
+    public es.inditex.prices.service.dto.input.ProductPriceSearch getProductPriceSearch(Integer brand, Integer product, String date) throws MainException {
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-ss HH:mm");
+        Date dateSearch = null;
+        try {
+            dateSearch = sdf.parse(date);
+        } catch (ParseException e) {
+            throw new MainException("Error en campo fecha");
+        }
+        return ProductPriceSearch.builder().brand(brand).product(product).date(dateSearch).build();
     }
     
     @Override

@@ -5,7 +5,7 @@ import es.inditex.prices.service.dto.output.ProductPrice;
 
 /**
  * Price Service interface for management prices
- * @author Paradigma Digital
+ * @author Benjamin Rodriguez
  *
  */
 public interface PriceService {

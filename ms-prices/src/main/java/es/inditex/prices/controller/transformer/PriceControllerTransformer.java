@@ -1,6 +1,7 @@
 package es.inditex.prices.controller.transformer;
 
 import es.inditex.prices.controller.rdto.response.ProductPriceRDTO;
+import es.inditex.prices.exception.MainException;
 import es.inditex.prices.service.dto.input.ProductPriceSearch;
 import es.inditex.prices.service.dto.output.ProductPrice;
 
@@ -18,7 +19,7 @@ public interface PriceControllerTransformer {
      * @param date
      * @return
      */
-    ProductPriceSearch getProductPriceSearch(Integer brand, Integer product, String date);
+    ProductPriceSearch getProductPriceSearch(Integer brand, Integer product, String date) throws MainException;
     
     /**
      * Transform productPrice in ProductPriceRDTO

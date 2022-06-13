@@ -3,6 +3,8 @@ package es.inditex.prices.service.dto.input;
 import lombok.Builder;
 import lombok.Data;
 
+import java.util.Date;
+
 /**
  * DTO for input search services
  * @author Benjamin Rodriguez
@@ -16,6 +18,6 @@ public class ProductPriceSearch {
     
     private Integer brand;
     
-    private String date;
+    private Date date;
 
 }

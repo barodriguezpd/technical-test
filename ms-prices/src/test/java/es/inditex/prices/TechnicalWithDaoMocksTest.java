@@ -1,7 +1,7 @@
 package es.inditex.prices;
 
-import es.inditex.prices.service.PriceService;
-import es.inditex.prices.service.dto.output.ProductPrice;
+import es.inditex.prices.service.dao.PricesDao;
+import es.inditex.prices.service.dao.entity.Prices;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
@@ -12,7 +12,10 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.RequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 
+import java.sql.Timestamp;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import static org.hamcrest.CoreMatchers.containsString;
 import static org.junit.jupiter.api.Assertions.fail;
@@ -24,7 +27,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 @SpringBootTest
 @AutoConfigureMockMvc
-public class TechnicalWithServiceMocksTest {
+public class TechnicalWithDaoMocksTest {
 
     Integer brand = new Integer(1);
     Integer product = new Integer(35455);
@@ -33,13 +36,13 @@ public class TechnicalWithServiceMocksTest {
     private MockMvc mockMvc;
     
     @MockBean
-    private PriceService service;
+    private PricesDao priceDao;
     
     @Test
     void searchPrice1() {
         String date = "2020-06-14 10:00";
         String response = "35.5";
-        when(service.searchPrice(any())).thenReturn(getProductPrice(response));
+        when(priceDao.getPrices(any(), any(), any())).thenReturn(getPrices(response, 1));
         
         try {
             RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/price?product=" + product + "&brand=" + brand + "&date=" + date).accept(MediaType.APPLICATION_JSON);
@@ -54,7 +57,7 @@ public class TechnicalWithServiceMocksTest {
     void searchPrice2() {
         String date = "2020-06-14 16:00";
         String response = "25.45";
-        when(service.searchPrice(any())).thenReturn(getProductPrice(response));
+        when(priceDao.getPrices(any(), any(), any())).thenReturn(getPrices(response, 2));
         
         try {
             RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/price?product=" + product + "&brand=" + brand + "&date=" + date).accept(MediaType.APPLICATION_JSON);
@@ -69,7 +72,7 @@ public class TechnicalWithServiceMocksTest {
     void searchPrice3() {
         String date = "2020-06-14 21:00";
         String response = "35.5";
-        when(service.searchPrice(any())).thenReturn(getProductPrice(response));
+        when(priceDao.getPrices(any(), any(), any())).thenReturn(getPrices(response, 1));
         
         try {
             RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/price?product=" + product + "&brand=" + brand + "&date=" + date).accept(MediaType.APPLICATION_JSON);
@@ -84,7 +87,7 @@ public class TechnicalWithServiceMocksTest {
     void searchPrice4() {
         String date = "2020-06-15 10:00";
         String response = "30.5";
-        when(service.searchPrice(any())).thenReturn(getProductPrice(response));
+        when(priceDao.getPrices(any(), any(), any())).thenReturn(getPrices(response, 3));
         
         try {
             RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/price?product=" + product + "&brand=" + brand + "&date=" + date).accept(MediaType.APPLICATION_JSON);
@@ -99,7 +102,7 @@ public class TechnicalWithServiceMocksTest {
     void searchPrice5() {
         String date = "2020-06-16 21:00";
         String response = "38.95";
-        when(service.searchPrice(any())).thenReturn(getProductPrice(response));
+        when(priceDao.getPrices(any(), any(), any())).thenReturn(getPrices(response, 4));
         
         try {
             RequestBuilder requestBuilder = MockMvcRequestBuilders.get("/price?product=" + product + "&brand=" + brand + "&date=" + date).accept(MediaType.APPLICATION_JSON);
@@ -110,9 +113,16 @@ public class TechnicalWithServiceMocksTest {
         }
     }
     
-    private ProductPrice getProductPrice(String price) {
-        Date dateTest = new Date();
-        ProductPrice productPrice = ProductPrice.builder().brand(brand).product(product).price(Double.parseDouble(price)).priceList(1).startDate(dateTest).endDate(dateTest).build();
-        return productPrice;
+    private List<Prices> getPrices(String price, int priceList) {
+        List<Prices> prices = new ArrayList<Prices>();
+        Prices pricesEntity = new Prices();
+        pricesEntity.setPrice(Double.parseDouble(price));
+        pricesEntity.setStartDate(new Timestamp(new Date().getTime()));
+        pricesEntity.setEndDate(new Timestamp(new Date().getTime()));
+        pricesEntity.setProductId(product);
+        pricesEntity.setBrandId(brand);
+        pricesEntity.setPriceList(priceList);
+        prices.add(pricesEntity);
+        return prices;
     }
 }

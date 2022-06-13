@@ -25,6 +25,6 @@ public class ProductPrice {
     
     private Date endDate;
     
-    private BigDecimal price;
+    private Double price;
     
 }

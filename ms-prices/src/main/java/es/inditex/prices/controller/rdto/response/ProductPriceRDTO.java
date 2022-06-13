@@ -8,8 +8,6 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import java.math.BigDecimal;
-
 /**
  * Request DTO response with product price information
  * @author Benjamin Rodriguez
@@ -37,6 +35,6 @@ public class ProductPriceRDTO {
     private String endDate;
 
     @ApiModelProperty(value = "Price", example = "25.50")
-    private BigDecimal price;
+    private double price;
     
 }
