@@ -19,10 +19,12 @@
 * Date field (start_date, end_date) in database how to numbers
 
 **Test of charge**
+
 The load test allowed us to determine that by storing the date fields, the queries improved in response times.
 Test result files
 * doc/gatling-simulation-withdates
 * doc/gatling-simulation-withdatenumber
+
 The separation in layers made it easy for the change to only be made at the persistence and transformers level without affecting the other layers
 
 ### Build and running
