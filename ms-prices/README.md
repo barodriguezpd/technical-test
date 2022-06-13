@@ -3,7 +3,7 @@
 ### API First
 
 * API definition according to business need: price and application dates of the product 
-* APi file: doc/api-definition.yml
+* API file: doc/api-definition.yml
 
 ### Design decisions
 
@@ -62,3 +62,12 @@ curl -X GET "http://localhost:8080/price?brand=1&date=2020-06-16%2021%3A00&produ
 
 ### PostmanFile
 doc/PricesTest.postman_collection.json
+
+### Container Build
+For container build execute
+
+docker build -t my_docker_hub_username/technical_test:1_0_0 .
+
+For running
+
+docker run -p 8080:8080 --env SPRING_PROFILES_ACTIVE=docker my_docker_hub_username/technical_test:1_0_0
