@@ -1,6 +1,5 @@
 package es.inditex.prices.controller.transformer.impl;
 
-import es.inditex.prices.controller.rdto.response.ProductPriceRDTO;
 import es.inditex.prices.controller.transformer.PriceControllerTransformer;
 import es.inditex.prices.exception.MainException;
 import es.inditex.prices.exception.NotValidException;
@@ -28,14 +27,6 @@ public class PriceControllerTransformerImpl implements PriceControllerTransforme
         return ProductPriceSearch.builder().brand(brand).product(new Long(product)).date(dateSearch).build();
     }
     
-    @Override
-    public ProductPriceRDTO getProductPriceRDTO(ProductPrice productPrice) {
-        SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-        return ProductPriceRDTO.builder().brand(productPrice.getBrand()).endDate(sdfDate.format(productPrice.getEndDate()))
-            .price(productPrice.getPrice()).product(productPrice.getProduct()).startDate(sdfDate.format(productPrice.getStartDate()))
-            .priceList(productPrice.getPriceList()).build();
-    }
-
     @Override
     public es.inditex.prices.api.model.ProductPrice getProductPrice(ProductPrice productPrice) {
         SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd HH:mm");
