@@ -40,17 +40,14 @@ paths:
         type: integer
       - in: query
         name: date
-        description: date in format '2021-01-30T08:30:00Z'
+        description: date in format '2021-01-30 08:30'
         type: string
         required: false
-        format: date-time
       responses:
         200:
           description: search results matching criteria
           schema:
-            type: array
-            items:
-              $ref: '#/definitions/ProductPrice'
+            $ref: '#/definitions/ProductPrice'
         400:
           description: bad input parameter
 definitions:
@@ -58,20 +55,18 @@ definitions:
     type: object
     properties:
       brand:
-        type: number
-        example: 1
+        type: integer
+        format: int32
       product:
         type: integer
-        example: 35411
+        format: int64
       price_list:
         type: integer
-        example: 1
+        format: int32
       start_date:
         type: string
-        format: date-time
       end_date:
         type: string
-        format: date-time
       price:
         type: number
 basePath: /benjaminrodriguez/persistence-prices/1.0.0

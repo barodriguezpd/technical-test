@@ -27,4 +27,13 @@ public interface PriceControllerTransformer {
      * @return
      */
     ProductPriceRDTO getProductPriceRDTO(ProductPrice productPrice);
+    
+    /**
+     * Transform productPrice in API.ProductPrice
+     * @param productPrice
+     * @return
+     */
+    es.inditex.prices.api.model.ProductPrice getProductPrice(ProductPrice productPrice);
+    
+    
 }

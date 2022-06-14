@@ -8,6 +8,7 @@ import es.inditex.prices.service.dto.input.ProductPriceSearch;
 import es.inditex.prices.service.dto.output.ProductPrice;
 import org.springframework.stereotype.Component;
 
+import java.math.BigDecimal;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -34,5 +35,18 @@ public class PriceControllerTransformerImpl implements PriceControllerTransforme
             .price(productPrice.getPrice()).product(productPrice.getProduct()).startDate(sdfDate.format(productPrice.getStartDate()))
             .priceList(productPrice.getPriceList()).build();
     }
+
+    @Override
+    public es.inditex.prices.api.model.ProductPrice getProductPrice(ProductPrice productPrice) {
+        SimpleDateFormat sdfDate = new SimpleDateFormat("yyyy-MM-dd HH:mm");
+        es.inditex.prices.api.model.ProductPrice productP = new es.inditex.prices.api.model.ProductPrice();
+        productP.brand(productPrice.getBrand());
+        productP.endDate(sdfDate.format(productPrice.getEndDate()));
+        productP.price(BigDecimal.valueOf(productPrice.getPrice()));
+        productP.priceList(productPrice.getPriceList());
+        productP.product(productPrice.getPriceList().longValue());
+        return productP;
+    }
+    
     
 }
